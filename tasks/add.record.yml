@@ -9,10 +9,10 @@
 - name: setup godaddy dns record
   set_fact:
     godaddy_dns_record:
-      name:           '{{record_name}}'
-      data:           '{{record_data}}'
-      type:           '{{type}}'
-      ttl:            '{{ttl}}'
+      - type:           '{{type}}'
+        name:           '{{record_name}}'
+        data:           '{{record_data}}'
+        ttl:            '{{ttl}}'
 
 - name: update godaddy_dns_record with priority
   set_fact:
@@ -47,7 +47,7 @@
 
 - name: setup records_data_dict
   set_fact:
-    body_dict: [ '{{godaddy_dns_record}}' ]
+    body_dict: '{{godaddy_dns_record}}'
 
 - name: setup setup record_data (json)
   set_fact:
